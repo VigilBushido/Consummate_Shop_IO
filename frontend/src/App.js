@@ -10,7 +10,7 @@ const App = () => {
       <Header />
       <main className='py-3'>
         <Container>
-          <h1><center><img src={chat} alt='chatimg' className='chat_img' />Welcome to IO efficiency</center></h1>
+          <h1 className='ai'><img src={chat} alt='chatimg' className='chat_img' />Welcome to IO efficiency</h1>
           <HomeScreen />
         </Container>
       </main>
