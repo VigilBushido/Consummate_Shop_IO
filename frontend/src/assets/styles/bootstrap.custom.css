@@ -188,6 +188,16 @@
   box-sizing: border-box;
 }
 
+.building_img {
+  height: 100px;
+  width: 100px;
+}
+
+.chat_img {
+  height: 50px;
+  width: 50px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   :root {
     scroll-behavior: smooth;
