@@ -1,5 +1,6 @@
 import { Col, Row } from 'react-bootstrap';
 import building from '../assets/building.svg';
+import Product from '../components/Product';
 import products from '../products';
 
 const HomeScreen = () => {
@@ -8,8 +9,8 @@ const HomeScreen = () => {
         <h1><img src={building} alt='bldg' className='building_img' />Latest Products</h1>
         <Row>
          {products.map((product) => (
-            <Col sm={12} md={6} lg={4} xl={3}>
-                <h3>{product.name}</h3>
+            <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+                <Product product={product} />
             </Col>
          ))}
         </Row>
