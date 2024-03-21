@@ -1,0 +1,23 @@
+{
+  "name": "consummate_shop_io",
+  "version": "2.0.1",
+  "description": "Full Stack Transaction IO application with state management",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VigilBushido/Consummate_Shop_IO.git"
+  },
+  "author": "Sergio Munguia Jr.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/VigilBushido/Consummate_Shop_IO/issues"
+  },
+  "homepage": "https://github.com/VigilBushido/Consummate_Shop_IO#readme",
+  "dependencies": {
+    "express": "^5.0.0-beta.2"
+  }
+}
