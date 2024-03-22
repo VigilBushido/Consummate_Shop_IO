@@ -5,19 +5,27 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "node backend/server.js"
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/VigilBushido/Consummate_Shop_IO.git"
   },
   "author": "Sergio Munguia Jr.",
-  "license": "MIT",
+  "license": "GNU",
   "bugs": {
     "url": "https://github.com/VigilBushido/Consummate_Shop_IO/issues"
   },
   "homepage": "https://github.com/VigilBushido/Consummate_Shop_IO#readme",
   "dependencies": {
     "express": "^5.0.0-beta.2"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "dotenv": "^16.4.5",
+    "nodemon": "^3.1.0"
   }
 }
