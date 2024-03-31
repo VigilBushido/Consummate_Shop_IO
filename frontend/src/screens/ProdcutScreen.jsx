@@ -1,6 +1,7 @@
 import { Button, Card, Col, Image, ListGroup, Row } from 'react-bootstrap';
 import { useParams } from "react-router-dom";
 import { Link } from 'react-router-dom';
+import Loader from '../components/Loader';
 import Rating from '../components/Rating';
 import { useGetProductDetailsQuery } from '../slices/productsApiSlice';
 
@@ -13,7 +14,7 @@ const ProdcutScreen = () => {
     <>
       <Link className="btn btn-light my-3" to="/">Go Back</Link>
 
-      {isLoading ? (<h2>Loading...</h2>) : error ? (<div>{error?.data?.message || error.error}</div>) : (
+      {isLoading ? (<Loader />) : error ? (<div>{error?.data?.message || error.error}</div>) : (
         <Row>
           <Col md={5}>
             <Image src={product.image} alt={product.name} fluid />
