@@ -1,4 +1,5 @@
-import { Button, Card, Col, Image, ListGroup, Row } from 'react-bootstrap';
+import { useState } from 'react';
+import { Button, Card, Col, Form, Image, ListGroup, Row } from 'react-bootstrap';
 import { useParams } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import Loader from '../components/Loader';
@@ -8,6 +9,8 @@ import { useGetProductDetailsQuery } from '../slices/productsApiSlice';
 
 const ProdcutScreen = () => {
   const { id: productId } = useParams();
+
+  const [qty, setQty] = useState(1);
 
   const { data: product, isLoading, error } = useGetProductDetailsQuery(productId);
 
@@ -55,6 +58,27 @@ const ProdcutScreen = () => {
                     </Col>
                   </Row>
                 </ListGroup.Item>
+
+                {product.countInStock > 0 && (
+                  <ListGroup.Item>
+                    <Row>
+                      <Col>Qty</Col>
+                      <Col>
+                        <Form.Control
+                          as='select'
+                          value={qty}
+                          onChange={(e) => setQty(Number(e.target.value))}>
+                          {[...Array(product.countInStock).keys()].map((x) => (
+                            <option key={x + 1} value={x + 1}   >
+                              {x + 1}
+                            </option>
+                          ))}
+                        </Form.Control>
+                      </Col>
+                    </Row>
+                  </ListGroup.Item>
+                )}
+
                 <ListGroup.Item>
                   <Button className='btn-block' type='button' disabled={product.countInStock === 0}>
                     Add to Cart
