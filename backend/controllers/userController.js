@@ -25,33 +25,33 @@ const logoutUser = asyncHandler(async (req, res) => {
 // @desc    Get User profile
 // @route   GET /api/users/profile
 // @access  Private
-const getUser = asyncHandler(async (req, res) => {
+const getUserProfile = asyncHandler(async (req, res) => {
     res.send('get user profile user');
 });
 
 // @desc    Update user profile
 // @route   PUT /api/users/profile
 // @access  Private
-const updatetUser = asyncHandler(async (req, res) => {
+const updateUserProfile = asyncHandler(async (req, res) => {
     res.send('update user profile');
 });
 
-// @desc    Get all users
+// @desc    Get users
 // @route   GET /api/users
 // @access  Private/Admin
 const getUsers = asyncHandler(async (req, res) => {
     res.send('get all users');
 });
 
-// @desc    Update user profile
-// @route   GET /api/users
+// @desc    Get user by id
+// @route   GET /api/users/:id
 // @access  Private/Admin
-const updateUserProfile = asyncHandler(async (req, res) => {
-    res.send('update user profile');
+const getUserById = asyncHandler(async (req, res) => {
+    res.send('get user by id');
 });
 
-// @desc    Update user profile
-// @route   GET /api/users
+// @desc    Delete user
+// @route   GET /api/users/:id
 // @access  Private/Admin
 const deleteUser = asyncHandler(async (req, res) => {
     res.send('delete user');
@@ -63,6 +63,18 @@ const deleteUser = asyncHandler(async (req, res) => {
 const updateUser = asyncHandler(async (req, res) => {
     res.send('update user');
 });
+
+export {
+    authUser,
+    registerUser,
+    logoutUser,
+    getUserProfile,
+    updateUserProfile,
+    getUsers,
+    deleteUser,
+    getUserById,
+    updateUser
+}
 
 
 
