@@ -10,6 +10,7 @@ lerna-debug.log*
 # Additional Files
 biome.json
 package-lock.json
+example.env
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
