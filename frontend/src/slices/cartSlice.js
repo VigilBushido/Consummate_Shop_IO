@@ -30,7 +30,7 @@ const cartSlice = createSlice({
         saveShippingAddress: (state, action) => {
             state.shippingAddress = action.payload;
             return updateCart(state);
-        }
+        },
     },
 });
 
