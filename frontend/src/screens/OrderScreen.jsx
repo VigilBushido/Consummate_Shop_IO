@@ -72,8 +72,20 @@ const OrderScreen = () => {
         toast.success('Payment Successful');
     }
 
-    function onError() { }
-    function createOrder() { }
+    function onError(err) {
+        toast.error(err.message);
+    }
+    function createOrder(data, actions) {
+        return actions.order.create({
+            purchase_units: [
+                {
+                    amount: {
+                        value: order.totalPrice,
+                    },
+                },
+            ],
+        });
+    }
 
     return isLoading ? <Loader /> : error ? <Message variant='danger' /> : (
         <>
