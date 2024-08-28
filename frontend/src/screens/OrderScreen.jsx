@@ -84,7 +84,10 @@ const OrderScreen = () => {
                     },
                 },
             ],
-        });
+        })
+            .then((orderId) => {
+                return orderId;
+            });
     }
 
     return isLoading ? <Loader /> : error ? <Message variant='danger' /> : (
