@@ -18,6 +18,13 @@ const ProfileScreen = () => {
 
     const { userInfo } = useSelector((state) => state.auth);
 
+    useEffect((userInfo) => {
+        if (userInfo) {
+            setName(userInfo.name);
+            setEmail(userInfo.email);
+        }
+    }, [userInfo.name, userInfo.email]);
+
     return (
         <div>ProfileScreen</div>
     );
