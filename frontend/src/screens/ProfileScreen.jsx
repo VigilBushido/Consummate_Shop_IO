@@ -25,8 +25,32 @@ const ProfileScreen = () => {
         }
     }, [userInfo.name, userInfo.email]);
 
+    const submitHandler = (e) => {
+        e.preventDefault();
+        console.log('submitHandler');
+    };
+
     return (
-        <div>ProfileScreen</div>
+        <Row>
+            <Col md={3}>
+                <h2>User Profile</h2>
+
+                <Form onSubmit={submitHandler}>
+                    <Form.Group controlId='name' className='my-2'>
+                        <Form.Label>Name</Form.Label>
+                        <Form.Control
+                            type='name'
+                            placeholder='Enter Name'
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                        ></Form.Control>
+                    </Form.Group>
+                </Form>
+            </Col>
+            <Col md={9}>
+                Column
+            </Col>
+        </Row>
     );
 };
 export default ProfileScreen;
