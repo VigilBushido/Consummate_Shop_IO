@@ -45,6 +45,16 @@ const ProfileScreen = () => {
                             onChange={(e) => setName(e.target.value)}
                         ></Form.Control>
                     </Form.Group>
+
+                    <Form.Group controlId='email' className='my-2'>
+                        <Form.Label>Email Address</Form.Label>
+                        <Form.Control
+                            type='email'
+                            placeholder='Enter Email'
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        ></Form.Control>
+                    </Form.Group>
                 </Form>
             </Col>
             <Col md={9}>
