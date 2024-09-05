@@ -18,6 +18,8 @@ const ProfileScreen = () => {
 
     const { userInfo } = useSelector((state) => state.auth);
 
+    const [updateProfile, { isLoading: loadingUpdateProfile }] = useProfileMutation();
+
     useEffect((userInfo) => {
         if (userInfo) {
             setName(userInfo.name);
@@ -55,6 +57,31 @@ const ProfileScreen = () => {
                             onChange={(e) => setEmail(e.target.value)}
                         ></Form.Control>
                     </Form.Group>
+
+                    <Form.Group controlId='password' className='my-2'>
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control
+                            type='password'
+                            placeholder='Enter password'
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        ></Form.Control>
+                    </Form.Group>
+
+                    <Form.Group controlId='confirmPassword' className='my-2'>
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control
+                            type='password'
+                            placeholder='Confirm password'
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                        ></Form.Control>
+                    </Form.Group>
+
+                    <Button type='submit' variant='primary' className='my-2'>
+                        Update
+                    </Button>
+                    {loadingUpdateProfile && <Loader />}
                 </Form>
             </Col>
             <Col md={9}>
