@@ -25,10 +25,21 @@ const ProfileScreen = () => {
             setName(userInfo.name);
             setEmail(userInfo.email);
         }
-    }, [userInfo.name, userInfo.email]);
+    }, [userInfo, userInfo.name, userInfo.email]);
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
+        if (password !== confirmPassword) {
+            toast.error('Password do not match');
+        } else {
+            try {
+                const res = await updateProfile({ _id: userInfo._id, name, email, password }).unwrap();
+                dispatch(setCredentials(res));
+                toast.success('Porfile updated successfully');
+            } catch (err) {
+                toast.error(err?.data?.message || err.error);
+            }
+        }
         console.log('submitHandler');
     };
 
