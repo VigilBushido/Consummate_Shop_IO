@@ -7,6 +7,7 @@ import Message from "../components/Message";
 import Loader from "../components/Loader";
 import { useProfileMutation } from "../slices/usersApiSlice";
 import { setCredentials } from "../slices/authSlice";
+import { useGetMyOrdersQuery } from "../slices/ordersApiSlice";
 
 const ProfileScreen = () => {
     const [name, setName] = useState("");
@@ -19,6 +20,8 @@ const ProfileScreen = () => {
     const { userInfo } = useSelector((state) => state.auth);
 
     const [updateProfile, { isLoading: loadingUpdateProfile }] = useProfileMutation();
+
+    const { data: orders, isLoading, error } = useGetMyOrdersQuery();
 
     useEffect((userInfo) => {
         if (userInfo) {
@@ -96,7 +99,24 @@ const ProfileScreen = () => {
                 </Form>
             </Col>
             <Col md={9}>
-                Column
+                <h2>
+                    My Orders
+                </h2>
+                {isLoading ? <Loader /> : error ? (<Message variant='danger'>
+                    {error?.data?.message || error.error}
+                </Message>) : (
+                    <Table striped bordered hover responsive className='table-sm'>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>DATE</th>
+                                <th>TOTAL</th>
+                                <th>PAID</th>
+                                <th>DELIVERED</th>
+                            </tr>
+                        </thead>
+                    </Table>
+                )}
             </Col>
         </Row>
     );
