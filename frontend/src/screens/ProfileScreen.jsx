@@ -113,8 +113,16 @@ const ProfileScreen = () => {
                                 <th>TOTAL</th>
                                 <th>PAID</th>
                                 <th>DELIVERED</th>
+                                <th></th>
                             </tr>
                         </thead>
+                        <tbody>
+                            {orders.map((order) => (
+                                <tr key={order._id}>
+                                    <td>{order._id}</td>
+                                </tr>
+                            ))}
+                        </tbody>
                     </Table>
                 )}
             </Col>
