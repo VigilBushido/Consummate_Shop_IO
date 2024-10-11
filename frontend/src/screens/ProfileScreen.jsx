@@ -137,6 +137,13 @@ const ProfileScreen = () => {
                                             <FaTimes style={{ color: 'red' }} />
                                         )}
                                     </td>
+                                    <td>
+                                        <LinkContainer to={`/order/${order._id}`}>
+                                            <Button className='btn-sm' variant='light'>
+                                                Details
+                                            </Button>
+                                        </LinkContainer>
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>
