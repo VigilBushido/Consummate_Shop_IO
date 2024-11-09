@@ -35,6 +35,12 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
                 url: `${ORDERS_URL}/my_orders`,
             }),
             keepUnusedDataFor: 5,
+        }),
+        getOrders: builder.query({
+            query: () => ({
+                url: ORDERS_URL,
+            }),
+            keepUnusedDataFor: 5,
         })
     }),
 });
@@ -44,5 +50,6 @@ export const {
     useGetOrderDetailsQuery,
     usePayOrderMutation,
     useGetPayPalClientIdQuery,
-    useGetMyOrdersQuery
+    useGetMyOrdersQuery,
+    useGetOrdersQuery
 } = ordersApiSlice;
