@@ -8,10 +8,37 @@ import { useGetProductsQuery } from '../../slices/productsApiSlice';
 const ProductListScreen = () => {
     const { data: product, isLoading, error } = useGetProductsQuery();
 
-    console.log(product);
+    //console.log(product);
 
-    return (
-        <div>ProductListScreen</div>
-    );
+    return <>
+        <Row className='align-items-center'>
+            <Col>
+                <h1>Products</h1>
+            </Col>
+            <Col className='text=end'>
+                <Button className='btn-sm m3'>
+                    <FaEdit /> Create Product
+                </Button>
+            </Col>
+        </Row>
+
+        {isLoading ? <Loader /> : error ? <Message variant='danger'></Message> : (
+            <>
+                <Table striped hover responsive className='table-sm'>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>NAME</th>
+                            <th>PRICE</th>
+                            <th>CATEGORY</th>
+                            <th>BRAND</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                </Table>
+            </>
+        )}
+    </>;
 };
+
 export default ProductListScreen;
