@@ -20,7 +20,7 @@ const ProductListScreen = () => {
                 <h1>Products</h1>
             </Col>
             <Col className='text=end'>
-                <Button className='btn-sm m3'>
+                <Button className='btn-sm m-3' style={{ float: 'right' }}>
                     <FaEdit /> Create Product
                 </Button>
             </Col>
