@@ -8,6 +8,10 @@ import { useGetProductsQuery } from '../../slices/productsApiSlice';
 const ProductListScreen = () => {
     const { data: product, isLoading, error } = useGetProductsQuery();
 
+    const deleteHandler = (id) => {
+        console.log('delete', id);
+    };
+
     //console.log(product);
 
     return <>
@@ -49,6 +53,9 @@ const ProductListScreen = () => {
                                             <FaEdit />
                                         </Button>
                                     </LinkContainer>
+                                    <Button variant='danger' className='btn-sm' onClick={() => deleteHandler(product._id)}>
+                                        <FaTrash style={{ color: 'white' }} />
+                                    </Button>
                                 </td>
                             </tr>
                         ))}
