@@ -36,12 +36,30 @@ const ProductEditScreen = () => {
         }
     }, [product]);
 
-    console.log(product);
+    //console.log(product);
 
     return <>
         <Link to="/admin/productlist" className="btn btn-light my-3">
             Go Back
         </Link>
+        <FormContainer>
+            <h1>Edit Product</h1>
+            {loadingUpdate && <Loader />}
+
+            {isLoading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
+                <Form>
+                    <Form.Group controlId='name'>
+                        <Form.Label>Name</Form.Label>
+                        <Form.Control
+                            type='name'
+                            placeholder='Enter name'
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                        ></Form.Control>
+                    </Form.Group>
+                </Form>
+            )}
+        </FormContainer>
     </>;
 };
 export default ProductEditScreen;
