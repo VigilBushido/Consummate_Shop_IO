@@ -62,6 +62,18 @@ const ProductEditScreen = () => {
         }
     };
 
+    const uploadFileHandler = async (e) => {
+        const formData = new FormData();
+        formData.append('image', e.target.files[0]);
+        try {
+            const res = await uploadProductImage(formData).unwrap();
+            toast.success(res.message);
+            setImage(res.image);
+        } catch (err) {
+            toast.error(err?.data?.message || err.error);
+        }
+    };
+
     return <>
         <Link to="/admin/productlist" className="btn btn-light my-3">
             Go Back
@@ -97,23 +109,13 @@ const ProductEditScreen = () => {
                             type='text'
                             placeholder='Enter image url'
                             value={image}
-                            onChange={(e) => setImage(e.target.value)}
+                            onChange={(e) => setImage}
                         ></Form.Control>
                         <Form.Control
                             type='file'
                             label='Choose File'
                             custom
-                            onChange={async (e) => {
-                                const formData = new FormData();
-                                formData.append('image', e.target.files[0]);
-                                const result = await uploadProductImage(formData);
-                                if (result.error) {
-                                    toast.error(result.error);
-                                } else {
-                                    toast.success('Image uploaded' + result.message);
-                                    setImage(result.data);
-                                }
-                            }}
+                            onChange={uploadFileHandler}
                         ></Form.Control>
                         {loadingUpload && <Loader />}
                     </Form.Group>
