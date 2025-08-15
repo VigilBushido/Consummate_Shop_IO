@@ -14,7 +14,7 @@ const UserEditScreen = () => {
     const [email, setEmail] = useState('');
     const [isAdmin, setIsAdmin] = useState(false);
 
-    const { data: user, isLoading, error } = useGetUserDetailsQuery(userId); //refetch
+    const { data: user, isLoading, error, refetch } = useGetUserDetailsQuery(userId); //refetch
 
     const [updateUser, { isLoading: loadingUpdate }] = useUpdateUserMutation();
 
@@ -32,7 +32,14 @@ const UserEditScreen = () => {
 
     const submitHandler = async (e) => {
         e.preventDefault();
-        console.log('submitHandler');
+        try {
+            await updateUser({ userId, name, email, isAdmin });
+            toast.success('User updated successfully!');
+            refetch();
+            navigate('/admin/userlist');
+        } catch (err) {
+            toast.error(err?.data?.message || err.error);
+        }
     };
 
     return <>
