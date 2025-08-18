@@ -119,4 +119,4 @@ const createProductReview = asyncHandler(async (req, res) => {
     }
 });
 
-export { getProducts, getProductsById, createProduct, updateProduct, deleteProduct };
+export { getProducts, getProductsById, createProduct, updateProduct, deleteProduct, createProductReview };
