@@ -31,6 +31,18 @@ const ProdcutScreen = () => {
     navigate('/cart');
   };
 
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      await createReview({ productId, rating, comment }).unwrap();
+      refetch();
+      setRating(0);
+      setComment('');
+    } catch (error) {
+      toast.error(error?.data?.message || error.error);
+    }
+  };
+
   return (
     <>
       <Link className="btn btn-light my-3" to="/">Go Back</Link>
@@ -126,8 +138,9 @@ const ProdcutScreen = () => {
                 <ListGroup.Item>
                   <h2>Write a Customer Review</h2>
                   {loadingProductReview && <Loader />}
+
                   {userInfo ? (
-                    <Form>
+                    <Form onSubmit={submitHandler}>
                       <Form.Group controlId='rating'>
                         <Form.Label>Rating</Form.Label>
                         <Form.Control
