@@ -36,6 +36,7 @@ const ProdcutScreen = () => {
     try {
       await createReview({ productId, rating, comment }).unwrap();
       refetch();
+      toast.success('Review submitted successfully');
       setRating(0);
       setComment('');
     } catch (error) {
