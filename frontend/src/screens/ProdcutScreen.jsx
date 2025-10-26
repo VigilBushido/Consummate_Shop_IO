@@ -39,8 +39,8 @@ const ProdcutScreen = () => {
       toast.success('Review submitted successfully');
       setRating(0);
       setComment('');
-    } catch (error) {
-      toast.error(error?.data?.message || error.error);
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
     }
   };
 
