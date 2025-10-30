@@ -4,6 +4,7 @@ import building from '../assets/building.svg';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import Product from '../components/Product';
+import Paginate from '../components/Paginate';
 import { useGetProductsQuery } from '../slices/productsApiSlice';
 
 
@@ -29,6 +30,7 @@ const HomeScreen = () => {
               </Col>
             ))}
           </Row>
+          <Paginate pages={data.pages} page={data.page} />
         </>
         )}
     </>
