@@ -4,6 +4,7 @@ import { FaEdit, FaTrash } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';
+import Paginate from '../../components/Paginate';
 import { toast } from 'react-toastify';
 import { useGetProductsQuery, useCreateProductMutation, useDeleteProductMutation } from '../../slices/productsApiSlice';
 
@@ -91,6 +92,7 @@ const ProductListScreen = () => {
                         ))}
                     </tbody>
                 </Table>
+                <Paginate pages={data.pages} page={data.page} isAdmin={true} />
             </>
         )}
     </>;
